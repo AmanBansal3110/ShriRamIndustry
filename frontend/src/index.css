@@ -1,0 +1,27 @@
+/* Tailwind config */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS for support bar item and navbar item spacing */
+.support-bar-item, .navbar-item {
+  margin-right: 1rem; /* Adjust as needed */
+}
+
+/* Custom animation for scrolling text */
+.animate-scroll {
+  animation: scroll 5s linear infinite;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(-100%); }
+}
+
+/* Custom CSS for separator line */
+.separator-line {
+  height: 2px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgb(73,71,72); /* New color for the separator line */
+}
