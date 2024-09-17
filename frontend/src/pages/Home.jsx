@@ -18,7 +18,8 @@ const HomePageFirstSegment = () => {
   }, [images.length]);
 
   return (
-    <div className="relative h-[70vh] bg-center bg-no-repeat overflow-hidden">
+    <div className="relative h-[70vh] lg:h-[85vh] bg-center bg-no-repeat overflow-hidden">
+      {/* Background image container */}
       <div
         className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
         style={{
@@ -28,18 +29,29 @@ const HomePageFirstSegment = () => {
           opacity: 1,
         }}
       ></div>
-      
-      <div className="flex items-center justify-center h-full">
-        {/* You can add a welcome text here if you like */}
+
+      {/* Text overlay */}
+      <div className="relative z-10 flex items-center justify-center h-full text-center">
+        <div className="bg-black bg-opacity-40 p-8 rounded-lg shadow-lg">
+          <h1 className="text-white text-3xl md:text-5xl font-semibold tracking-wide">
+            Welcome to Our Store
+          </h1>
+          <p className="text-gray-200 text-lg md:text-xl mt-4">
+            Discover the latest trends in men's fashion
+          </p>
+          <button className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full shadow-md hover:bg-blue-600 transition-colors duration-300">
+            Shop Now
+          </button>
+        </div>
       </div>
 
       {/* Dots Navigation */}
-      <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {images.map((_, index) => (
           <span
             key={index}
             onClick={() => setCurrentIndex(index)} // Click to navigate to that image
-            className={`cursor-pointer w-3 h-3 rounded-full ${index === currentIndex ? 'bg-white' : 'bg-gray-400'}`}
+            className={`cursor-pointer w-4 h-4 rounded-full ${index === currentIndex ? 'bg-white' : 'bg-gray-500'} hover:bg-white transition-all duration-300`}
           />
         ))}
       </div>
