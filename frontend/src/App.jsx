@@ -11,6 +11,9 @@ import SignIn from "./pages/SignIn";
 function App() {
   return (
     <Router>
+      <div>
+        <h1 className="w-full h-screen">Hii kya kr rha hai harsha</h1>
+      </div>
       <div className="flex flex-col min-h-screen">
         <Navbar />
         <div className="separator-line"></div> {/* Separator line added here */}
