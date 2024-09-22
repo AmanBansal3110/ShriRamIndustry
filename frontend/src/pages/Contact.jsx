@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer';
 import '../css/Contact.css'; // Create this CSS file for custom styles
 
 function Contact() {
@@ -12,17 +11,17 @@ function Contact() {
           
           <div className="contact-section mb-8">
             <h2 className="text-3xl font-semibold mb-4">Phone</h2>
-            <p className="text-lg text-gray-700">+1 (123) 456-7890</p>
+            <p className="text-lg text-gray-700">+91 8527774441</p>
           </div>
 
           <div className="contact-section mb-8">
             <h2 className="text-3xl font-semibold mb-4">Email</h2>
-            <p className="text-lg text-gray-700">contact@fashionfusion.com</p>
+            <p className="text-lg text-gray-700">shreeramindustries@gmail.com</p>
           </div>
 
           <div className="contact-section mb-8">
             <h2 className="text-3xl font-semibold mb-4">Address</h2>
-            <p className="text-lg text-gray-700">123 Fashion St, New York, NY 10001</p>
+            <p className="text-lg text-gray-700">Bahadurgarh, Haryana, India</p>
           </div>
         </div>
 
@@ -47,8 +46,6 @@ function Contact() {
           </form>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

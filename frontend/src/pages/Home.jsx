@@ -6,7 +6,6 @@ import background3 from '../assets/bg.jpg';
 import NewArrivalsSection from '../components/NewArrivalsSection';
 import MensCollectionSection from '../components/MensCollectionSection';
 import WomensCollectionSection from '../components/WomensCollectionSection';
-import Footer from '../components/Footer'; // Add this import
 import '../index.css'; 
 
 
@@ -89,9 +88,6 @@ const HomePage = () => {
           <WomensCollectionSection />
         </div>
       </div>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 };

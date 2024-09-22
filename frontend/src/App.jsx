@@ -7,7 +7,8 @@ import Contact from "./pages/Contact";
 import './index.css'; // Import the CSS file for global styles
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-
+import Cart from "./pages/Carts";
+import Footer from "./components/Footer";
 function App() {
   return (
     <Router>
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/cart" element={<Cart/>} />
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
@@ -25,6 +27,8 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
           </Routes>
         </main>
+        <div className="separator-line"></div> {/* Separator line added here */}
+        <Footer />
       </div>
     </Router>
   );

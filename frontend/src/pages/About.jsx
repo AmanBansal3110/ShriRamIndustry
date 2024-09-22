@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/About.css';
 import founderImage from '../assets/founder.jpg'; // Replace with actual paths to images
 import cofounderImage from '../assets/cofounder.jpg';
-import Footer from '../components/Footer'; // Import the Footer component
+// Removed Footer import
 
 function About() {
   return (
@@ -11,11 +11,11 @@ function About() {
         <div className="flex flex-col md:flex-row items-start justify-between">
           {/* Left Side: About the Company */}
           <div className="about-content md:w-1/2 md:pr-8 mb-8 md:mb-0 mt-20">
-            <h1 className="text-4xl font-bold mb-4 text-left text-blue-400">FashionFusion</h1>
+            <h1 className="text-4xl font-bold mb-4 text-left text-blue-400">Shree Ram Industries</h1>
             <section className="about-intro">
-              <h2 className="text-3xl font-semibold mb-4 text-blue-400">About Our Company</h2>
+              <h2 className="text-3xl font-semibold mb-4 text-blue-300">About Our Company</h2>
               <p className="text-lg text-gray-300 leading-relaxed">
-                At FashionFusion, we're passionate about bringing you the latest trends and timeless classics in clothing and accessories.
+                At Shree Ram Industries, we're passionate about bringing you the latest trends and timeless classics in clothing and accessories.
                 Our mission is to provide high-quality, sustainable fashion that empowers you to express your unique style while minimizing
                 environmental impact.
               </p>
@@ -43,8 +43,7 @@ function About() {
         </div>
       </div>
 
-      {/* Footer Component */}
-      <Footer />
+      {/* Removed Footer Component */}
     </div>
   );
 }

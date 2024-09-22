@@ -1,12 +1,13 @@
+// Import React and necessary hooks
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 
 // Import images explicitly in React
 import searchIcon from '../assets/search.png';
 import heartIcon from '../assets/heart.png';
 import cartIcon from '../assets/cart.png';
 
-// First Segment: Support Bar
+// Support Bar Component
 const SupportBar = () => {
   const navigate = useNavigate();
   return (
@@ -37,7 +38,7 @@ const SupportBar = () => {
   );
 };
 
-// Second Segment: Main Navbar
+// Main Navbar Component
 const MainNavbar = () => {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -75,11 +76,17 @@ const MainNavbar = () => {
           </div>
 
           <div className="flex space-x-4 mt-2 lg:mt-0">
-            {[{ icon: searchIcon, label: 'Search' }, { icon: heartIcon, label: 'Wishlist' }, { icon: cartIcon, label: 'Cart' }].map((item) => (
+            {[{ icon: searchIcon, label: 'Search' }, { icon: heartIcon, label: 'Wishlist' }].map((item) => (
               <button key={item.label} aria-label={item.label} className="navbar-item hover:text-pink-500 transition duration-300">
                 <img src={item.icon} alt={`${item.label} Icon`} className="w-6 h-6" />
               </button>
             ))}
+            <button 
+              onClick={() => navigate('/cart')} // Navigate to cart page
+              aria-label="Cart"
+              className="navbar-item hover:text-pink-500 transition duration-300">
+              <img src={cartIcon} alt="Cart Icon" className="w-6 h-6" />
+            </button>
           </div>
         </div>
       </nav>
@@ -87,7 +94,7 @@ const MainNavbar = () => {
   );
 };
 
-// Complete Navbar
+// Complete Navbar Component
 const Navbar = () => {
   return (
     <>
