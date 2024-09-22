@@ -1,0 +1,25 @@
+.sign-in-container {
+  background-color: #1a1a1a; /* Background color for the entire container */
+}
+
+.sign-in-card {
+  max-width: 400px; /* Max width for the card */
+  width: 100%; /* Full width */
+  border-radius: 8px; /* Rounded corners */
+  margin: 0 auto; /* Center the card */
+}
+
+.sign-in-input {
+  width: 100%; /* Full width for input */
+  padding: 0.5rem; /* Padding for input */
+  border-radius: 4px; /* Rounded corners for inputs */
+}
+
+.sign-in-button {
+  background-color: #1d4ed8; /* Blue color for the button */
+  color: #ffffff; /* White text color */
+}
+
+.sign-in-footer {
+  color: #b0b0b0; /* Light gray color for the footer text */
+}

@@ -1,0 +1,13 @@
+.contact-container {
+    background-color: #f9f9f9; /* Light background color */
+  }
+  
+  .contact-section {
+    border-bottom: 1px solid #eaeaea; /* Separator line for sections */
+    padding-bottom: 16px;
+  }
+  
+  .contact-section:last-child {
+    border-bottom: none; /* Remove the border from the last section */
+  }
+  

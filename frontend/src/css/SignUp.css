@@ -10,7 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
-    background-color: #ffffff; /* White background */
+    background-color: #d1d5db; /* bg-gray-300 */
   }
   
   .sign-up-card {
@@ -59,7 +59,7 @@ body {
   }
   
   .sign-up-button {
-    background-color: rgb(73,71,72); /* Theme color for the button */
+    background-color: #1f2937; /* blue-500 */
     color: #ffffff;
     font-size: 18px;
     padding: 15px;
@@ -72,7 +72,7 @@ body {
   }
   
   .sign-up-button:hover {
-    background-color: rgba(0, 0, 0, 0.644); /* Accent color for hover effect */
+    background-color: #4b5563; /* gray-600 */
   }
   
   .sign-up-footer {
@@ -90,4 +90,3 @@ body {
   .sign-up-link:hover {
     text-decoration: underline;
   }
-  

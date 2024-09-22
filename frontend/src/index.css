@@ -3,6 +3,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-neutral-50 text-neutral-900;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-bold py-2 px-4 rounded;
+  }
+  .btn-secondary {
+    @apply bg-secondary-600 hover:bg-secondary-700 text-white font-bold py-2 px-4 rounded;
+  }
+  .card {
+    @apply bg-white shadow-md rounded-lg overflow-hidden;
+  }
+}
+
 /* Custom CSS for support bar item and navbar item spacing */
 .support-bar-item, .navbar-item {
   margin-right: 1rem; /* Adjust as needed */
@@ -24,4 +42,18 @@
   margin: 0 auto;
   width: 100%;
   background-color: rgb(73,71,72); /* New color for the separator line */
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease forwards;
 }
