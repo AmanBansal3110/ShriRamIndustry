@@ -1,15 +1,34 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import './index.css'; // Import the CSS file for global styles
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Cart from "./pages/Carts";
-import Footer from "./components/Footer";
+
 function App() {
+  // loader state
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate data fetching with a timeout for the loader
+  useEffect(() => {
+    const fakeDataFetch = () => {
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 4000); // Preload for 4 seconds
+    };
+
+    fakeDataFetch();
+  }, []);
+
+  // If loading, show the Loader component
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  // Once loading is complete, render the main application
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
