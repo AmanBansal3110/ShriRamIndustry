@@ -9,6 +9,7 @@ const Search = () => {
     const simulatedResults = [
       { id: 1, name: 'Product 1', price: 3999 },
       { id: 2, name: 'Product 2', price: 5999 },
+
       // Add more simulated products here
     ].filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
 
