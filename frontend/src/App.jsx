@@ -7,6 +7,11 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import Loader from "./components/Loader"; // Add this line
+import Footer from "./components/Footer"; // Add this line
+import Cart from "./pages/Carts"; // Add this line
+import Wishlist from "./pages/Wishlist"; // Add this line
+import Search from "./pages/Search"; // Add this line
 
 function App() {
   // loader state
@@ -27,7 +32,7 @@ function App() {
   if (isLoading) {
     return <Loader />;
   }
-
+  
   // Once loading is complete, render the main application
   return (
     <Router>
@@ -38,6 +43,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart/>} />
             <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />

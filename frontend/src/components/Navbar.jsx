@@ -1,11 +1,6 @@
 // Import React and necessary hooks
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-
-// Import images explicitly in React
-import searchIcon from '../assets/search.png';
-import heartIcon from '../assets/heart.png';
-import cartIcon from '../assets/cart.png';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 // Support Bar Component
 const SupportBar = () => {
@@ -41,9 +36,12 @@ const SupportBar = () => {
 // Main Navbar Component
 const MainNavbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+  const isActive = (path) => location.pathname === path;
 
   return (
     <div>
@@ -51,7 +49,7 @@ const MainNavbar = () => {
       <nav className="bg-white text-gray-800 py-4 px-8 font-semibold shadow-sm">
         <div className="container mx-auto flex flex-wrap justify-between items-center">
           <div className="text-2xl navbar-item text-gray-900">
-            <a href="/" className="text-gray-900 hover:text-pink-500 transition duration-300">Lee-Bony</a>
+            <button onClick={() => navigate('/home')} className="text-gray-900 hover:text-pink-500 transition duration-300">Lee-Bony</button>
           </div>
 
           <button onClick={toggleMenu} className="lg:hidden">
@@ -66,7 +64,7 @@ const MainNavbar = () => {
                 <li key={item} className="navbar-item mb-2 lg:mb-0">
                   <button
                     onClick={() => navigate(`/${item.toLowerCase()}`)}
-                    className="hover:text-pink-500 transition duration-300 text-[rgb(73,71,72)] w-full text-left"
+                    className={`hover:text-pink-500 transition duration-300 text-[rgb(73,71,72)] w-full text-left ${isActive(`/${item.toLowerCase()}`) ? 'text-pink-500' : ''}`}
                   >
                     {item}
                   </button>
@@ -76,16 +74,29 @@ const MainNavbar = () => {
           </div>
 
           <div className="flex space-x-4 mt-2 lg:mt-0">
-            {[{ icon: searchIcon, label: 'Search' }, { icon: heartIcon, label: 'Wishlist' }].map((item) => (
-              <button key={item.label} aria-label={item.label} className="navbar-item hover:text-pink-500 transition duration-300">
-                <img src={item.icon} alt={`${item.label} Icon`} className="w-6 h-6" />
-              </button>
-            ))}
+            <button 
+              onClick={() => navigate('/search')} // Navigate to search page
+              aria-label="Search" 
+              className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/search') ? 'text-pink-500' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35m1.35-5.65a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+            <button 
+              onClick={() => navigate('/wishlist')} // Navigate to wishlist page
+              aria-label="Wishlist" 
+              className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/wishlist') ? 'text-pink-500' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+              </svg>
+            </button>
             <button 
               onClick={() => navigate('/cart')} // Navigate to cart page
               aria-label="Cart"
-              className="navbar-item hover:text-pink-500 transition duration-300">
-              <img src={cartIcon} alt="Cart Icon" className="w-6 h-6" />
+              className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/cart') ? 'text-pink-500' : ''}`}>
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.6 8M17 13l1.6 8M9 21a1 1 0 100-2 1 1 0 000 2zm6 0a1 1 0 100-2 1 1 0 000 2z" />
+              </svg>
             </button>
           </div>
         </div>

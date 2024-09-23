@@ -1,53 +1,33 @@
-// src/pages/Cart.jsx
 import React from 'react';
-import CartItem from '../components/CartItem';
-import CartSummary from '../components/CartSummary';
+import bin from '../assets/bin.svg';
 
-const Cart = () => {
-  // Example data, replace with actual data
-  const products = [
-    {
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Product 1',
-      description: 'Description for Product 1',
-      price: 49.99
-    },
-    {
-      imageUrl: 'https://via.placeholder.com/150',
-      name: 'Product 2',
-      description: 'Description for Product 2',
-      price: 79.99
-    },
-    // Add more products as needed
-  ];
-
-  const subtotal = products.reduce((acc, product) => acc + product.price, 0);
-  const shipping = 5.00; // Example shipping cost
-  const total = subtotal + shipping;
-
-  const handleCheckout = () => {
-    // Handle checkout logic here
-    console.log('Proceeding to checkout');
-  };
-
+const CartItem = ({ imageUrl, name, description, price, onRemove }) => {
   return (
-    <div className="container mx-auto py-8 flex flex-col lg:flex-row">
-      <div className="lg:w-3/4 space-y-4">
-        {products.map((product, index) => (
-          <CartItem
-            key={index}
-            imageUrl={product.imageUrl}
-            name={product.name}
-            description={product.description}
-            price={product.price}
-          />
-        ))}
-      </div>
-      <div className="lg:w-1/4 mt-8 lg:mt-0 lg:ml-8">
-        <CartSummary subtotal={subtotal} shipping={shipping} total={total} onCheckout={handleCheckout} />
+    <div className="w-full p-4">
+      <div className="shadow-lg rounded-lg flex relative">
+        <img 
+          src={imageUrl} 
+          alt="Product" 
+          className="w-1/3 h-32 object-cover rounded-l-lg" 
+        />
+        <div className="p-4 w-2/3 relative flex flex-col justify-center">
+          <h2 className="text-xl font-bold">{name}</h2>
+          <p className="text-gray-600">{description}</p>
+          <p className="text-lg font-semibold mt-2">Rs.{price}</p>
+          <button 
+            onClick={onRemove} 
+            className="absolute top-2 right-2 text-gray-500 py-1 px-3 rounded flex items-center"
+          >
+            <img 
+              src={bin}
+              className="h-4 w-4 mr-1"  // Adjusted size to be smaller
+              alt="Remove"
+            />
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Cart;
+export default CartItem;

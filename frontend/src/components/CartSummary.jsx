@@ -3,22 +3,22 @@ import React from 'react';
 
 const CartSummary = ({ subtotal, shipping, total, onCheckout }) => {
   return (
-    <div className="w-1/3 p-4 bg-white shadow-lg rounded-lg">
+    <div className="w-full h-4/5 p-4 flex flex-col justify-center bg-white shadow-lg rounded-lg">
       <h3 className="text-lg font-bold mb-4">Order Summary</h3>
-      <div className="flex justify-between mb-2">
-        <span>Subtotal:</span>
-        <span>${subtotal}</span>
+      <div className="flex justify-between mb-2 bg-gray-100 p-2 ">
+        <span className=''>Subtotal:</span>
+        <span>Rs.{subtotal}</span>
       </div>
-      <div className="flex justify-between mb-2">
+      <div className="flex justify-between mb-2 p-2 rounded-md">
         <span>Shipping:</span>
-        <span>${shipping}</span>
+        <span>Free Shipping</span>
       </div>
-      <div className="flex justify-between font-bold text-lg mb-4">
+      <div className="flex justify-between font-bold text-lg mb-4 bg-gray-100 p-2">
         <span>Total:</span>
-        <span>${total}</span>
+        <span>Rs.{total}</span>
       </div>
       <button
-        className="w-full bg-pink-500 text-white py-2 rounded-lg hover:bg-pink-600 transition duration-300"
+        className="w-full bg-pink-500 hover:bg-orange-500 text-white py-2 rounded-lg transition duration-300"
         onClick={onCheckout}
       >
         Proceed to Checkout

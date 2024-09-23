@@ -6,7 +6,7 @@ function Footer() {
     <footer className="footer bg-gray-800 text-white py-6">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="footer-logo mb-4 md:mb-0">
-          <h1 className="text-2xl font-bold">FashionFusion</h1>
+          <h1 className="text-2xl font-bold">Shri Ram Industries</h1>
         </div>
         
         <div className="footer-links flex space-x-4 mb-4 md:mb-0">
