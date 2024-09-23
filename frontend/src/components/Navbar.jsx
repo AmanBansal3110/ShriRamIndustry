@@ -1,21 +1,16 @@
-// Import React and necessary hooks
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
-// Support Bar Component
 const SupportBar = () => {
   const navigate = useNavigate();
   return (
     <div className="bg-gray-800 text-white text-xs flex flex-wrap justify-between items-center py-1 px-4">
-      {/* Left section */}
       <div className="flex-1 flex items-center">
         <span className="support-bar-item">
           <a href="mailto:shriramindustry@gmail.com" className="hover:text-pink-500 transition duration-300">shriramindustry@gmail.com</a>
         </span>
         <span className="support-bar-item hover:text-pink-500 transition duration-300 ml-4">Track My Order</span>
       </div>
-
-      {/* Center section - Discount scrolling text */}
       <div className="flex-1 flex justify-center">
         <div className="relative overflow-hidden h-6 w-80">
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 animate-scroll w-full">
@@ -23,8 +18,6 @@ const SupportBar = () => {
           </div>
         </div>
       </div>
-
-      {/* Right section */}
       <div className="flex-1 flex justify-end space-x-4">
         <button onClick={() => navigate('/signin')} className="hover:text-pink-500 transition duration-300 support-bar-item">Log In</button>
         <button onClick={() => navigate('/signup')} className="hover:text-pink-500 transition duration-300 support-bar-item">Sign Up</button>
@@ -33,14 +26,12 @@ const SupportBar = () => {
   );
 };
 
-// Main Navbar Component
 const MainNavbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   const isActive = (path) => location.pathname === path;
 
   return (
@@ -60,7 +51,7 @@ const MainNavbar = () => {
 
           <div className={`${isMenuOpen ? 'block' : 'hidden'} lg:flex lg:items-center lg:w-auto w-full`}>
             <ul className="lg:flex flex-col lg:flex-row lg:space-x-6 mt-4 lg:mt-0">
-              {['Home', 'About', 'Products', 'Contact'].map((item) => (
+              {['Home', 'About'].map((item) => (
                 <li key={item} className="navbar-item mb-2 lg:mb-0">
                   <button
                     onClick={() => navigate(`/${item.toLowerCase()}`)}
@@ -70,12 +61,64 @@ const MainNavbar = () => {
                   </button>
                 </li>
               ))}
+              <li className="navbar-item mb-2 lg:mb-0 relative group">
+                <button
+                  className={`hover:text-pink-500 transition duration-300 text-[rgb(73,71,72)] w-full text-left flex items-center`}
+                >
+                  Men's Fashion
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10 hidden group-hover:block">
+                  {['New Arrivals', 'Festive Wears', 'Men\'s Clothing'].map((category) => (
+                    <li key={category}>
+                      <button
+                        onClick={() => navigate(`/men/${category.toLowerCase().replace(/\s+/g, '-')}`)}
+                        className="block px-4 py-2 text-sm hover:bg-gray-200"
+                      >
+                        {category}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li className="navbar-item mb-2 lg:mb-0 relative group">
+                <button
+                  className={`hover:text-pink-500 transition duration-300 text-[rgb(73,71,72)] w-full text-left flex items-center`}
+                >
+                  Women's Fashion
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-10 hidden group-hover:block">
+                  {['New Arrivals', 'Festive Wears', 'Women\'s Clothing'].map((category) => (
+                    <li key={category}>
+                      <button
+                        onClick={() => navigate(`/women/${category.toLowerCase().replace(/\s+/g, '-')}`)}
+                        className="block px-4 py-2 text-sm hover:bg-gray-200"
+                      >
+                        {category}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li className="navbar-item mb-2 lg:mb-0">
+                <button
+                  onClick={() => navigate('/contact')}
+                  className={`hover:text-pink-500 transition duration-300 text-[rgb(73,71,72)] w-full text-left ${isActive('/contact') ? 'text-pink-500' : ''}`}
+                >
+                  Contact
+                </button>
+              </li>
             </ul>
           </div>
 
           <div className="flex space-x-4 mt-2 lg:mt-0">
             <button 
-              onClick={() => navigate('/search')} // Navigate to search page
+              onClick={() => navigate('/search')} 
               aria-label="Search" 
               className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/search') ? 'text-pink-500' : ''}`}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -83,7 +126,7 @@ const MainNavbar = () => {
               </svg>
             </button>
             <button 
-              onClick={() => navigate('/wishlist')} // Navigate to wishlist page
+              onClick={() => navigate('/wishlist')} 
               aria-label="Wishlist" 
               className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/wishlist') ? 'text-pink-500' : ''}`}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +134,7 @@ const MainNavbar = () => {
               </svg>
             </button>
             <button 
-              onClick={() => navigate('/cart')} // Navigate to cart page
+              onClick={() => navigate('/cart')} 
               aria-label="Cart"
               className={`navbar-item hover:text-pink-500 transition duration-300 ${isActive('/cart') ? 'text-pink-500' : ''}`}>
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +148,7 @@ const MainNavbar = () => {
   );
 };
 
-// Complete Navbar Component
+
 const Navbar = () => {
   return (
     <>
