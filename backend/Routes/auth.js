@@ -36,4 +36,33 @@ router.post('/signup', async (req, res) => {
   }
 });
 
+router.post('/signin', async (req, res) =>{
+  const {email, password} = req.body;
+  if(!email || !password){
+    return res.status(400).json({message: 'All fields are required'});
+  }
+  try{
+  const user = await User.findOne({email});
+  if(!user){
+    return res.status(400).json({message: 'User does not exist'});
+  }
+  const passwordMatch = await bcrypt.compare(password, user.password);
+  if(!passwordMatch){
+    return res.status(401).json({message: 'Invalid credentials'});
+  }
+  const token = jwt.sign({userId: user._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
+  res.cookie('token', token, {httpOnly: true, secure: true});
+  res.status(200).json({message: 'Login successful', token});
+}
+  catch(error){
+    res.status(500).json({message: 'Internal server error'});
+  }
+});
+
+router.post('/logout', (req, res) =>{
+  res.clearCookie('token');
+  res.status(200).json({message: 'Logout successful'});
+});
+
+
 module.exports = router;

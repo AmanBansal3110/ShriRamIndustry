@@ -12,7 +12,7 @@ function SignIn() {
         alert('Enter all fields');
         return
       }
-      const response = await fetch('http://localhost:3000/signin', {
+      const response = await fetch('http://localhost:3001/auth/signin', {
         method: 'POST',
         credentials: 'include', 
         headers: {

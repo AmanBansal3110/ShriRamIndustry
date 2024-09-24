@@ -13,28 +13,26 @@ function SignUp() {
 
       if (!firstname || !lastname || !email || !password) {
         alert('All fields are required. Please fill out every field.');
-        return; // Stop further execution if validation fails
+        return;
       }
-      const response = await fetch('http://localhost:3000/register', {
+
+      const response = await fetch('http://localhost:3001/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ firstname, lastname, email, password }),
-        credentials: 'include', // Ensure cookies are included
+        credentials: 'include',
       });
 
       if (!response.ok) {
-        // Check the status code and throw an error if not 200 OK
-        const errorData = await response.json(); // or response.text() based on server response
+        const errorData = await response.json();
         throw new Error(errorData.error || 'Registration failed');
       }
 
-      // Parse the response as text
       navigate('/home');
-      
     } catch (error) {
-      alert('Account already exists');
+        alert(error.message);
     }
   }
 

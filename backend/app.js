@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const routes = require('./Routes');
 const authRoutes = require('./Routes/auth');
 const connectDB = require('./config/db');
+require('dotenv').config();
 
 const app = express();
 
@@ -23,7 +24,8 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.use(cors({
-  origin: 'http://localhost:5173'
+  origin: 'http://localhost:3000',
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
