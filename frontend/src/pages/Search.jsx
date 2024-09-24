@@ -18,7 +18,7 @@ const Search = () => {
 
   return (
     <div className="container mx-auto py-12 px-4">
-      <h1 className="text-4xl font-bold text-pink-500 text-center mb-8">Search Products</h1>
+      <h1 className="text-4xl font-bold text-gray-800 text-center mb-8">Search Products</h1>
       <div className="flex justify-center mb-8">
         <input
           type="text"
@@ -29,7 +29,7 @@ const Search = () => {
         />
         <button
           onClick={handleSearch}
-          className="ml-2 bg-pink-500 text-white rounded-lg py-2 px-4 hover:bg-pink-600 transition-colors duration-300"
+          className="ml-2 bg-gray-800 text-white rounded-lg py-2 px-4 hover:bg-black transition-colors duration-300"
         >
           Search
         </button>

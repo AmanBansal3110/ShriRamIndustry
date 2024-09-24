@@ -46,7 +46,7 @@ const HomePage = () => {
             <h1 className="text-pink-200 text-3xl md:text-5xl font-semibold tracking-wide">Welcome to Our Store</h1>
             <p className="text-gray-200 text-lg md:text-xl mt-4">Discover the latest trends in fashion</p>
             <button
-              onClick={() => navigate('/products')}
+              onClick={() => navigate('/productpage')}
               className="mt-6 px-6 py-2 bg-orange-500 text-white rounded-full shadow-md hover:bg-pink-400 transition-colors duration-300 inline-block transform transition-transform duration-300 hover:scale-105"
             >
               Shop Now

@@ -19,6 +19,7 @@ const Cart = () => {
       description: 'Description for Product 2',
       price: 79.99
     },
+
   ]);
 
   const subtotal = products.reduce((acc, product) => acc + product.price, 0);

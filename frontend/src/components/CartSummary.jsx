@@ -3,7 +3,7 @@ import React from 'react';
 
 const CartSummary = ({ subtotal, shipping, total, onCheckout }) => {
   return (
-    <div className="w-full h-4/5 p-4 flex flex-col justify-center bg-white shadow-lg rounded-lg">
+    <div className="w-full h-4/5 p-4 flex flex-col justify-sta bg-white shadow-lg rounded-lg">
       <h3 className="text-lg font-bold mb-4">Order Summary</h3>
       <div className="flex justify-between mb-2 bg-gray-100 p-2 ">
         <span className=''>Subtotal:</span>

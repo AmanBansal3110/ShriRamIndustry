@@ -2,17 +2,17 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Products from "./pages/Products";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
-import Loader from "./components/Loader"; // Add this line
-import Footer from "./components/Footer"; // Add this line
-import Cart from "./pages/Carts"; // Add this line
-import Wishlist from "./pages/Wishlist"; // Add this line
-import Search from "./pages/Search"; // Add this line
-
+import Loader from "./components/Loader"; 
+import Footer from "./components/Footer"; 
+import Cart from "./pages/Carts"; 
+import Wishlist from "./pages/Wishlist"; 
+import Search from "./pages/Search"; 
+import ProductPage from "./pages/ProductPage"; 
+import ProductsCard from "./components/ProductsCard";
 function App() {
   // loader state
   const [isLoading, setIsLoading] = useState(true);
@@ -46,11 +46,12 @@ function App() {
             <Route path="/search" element={<Search />} />
             <Route path="/wishlist" element={<Wishlist />} />
             <Route path="/cart" element={<Cart/>} />
-            <Route path="/products" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/products" element={<ProductsCard />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
+            <Route path="/productpage" element={<ProductPage />} />
           </Routes>
         </main>
         <div className="separator-line"></div> {/* Separator line added here */}
