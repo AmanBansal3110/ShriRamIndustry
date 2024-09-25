@@ -54,15 +54,28 @@ router.post('/signin', async (req, res) =>{
   res.cookie('token', token, {httpOnly: true, secure: true});
   res.status(200).json({message: 'Login successful', token});
 }
-  catch(error){
+  catch(error){ 
     res.status(500).json({message: 'Internal server error'});
   }
 });
 
-router.post('/logout', (req, res) =>{
+router.get('/logout', (req, res) =>{
   res.clearCookie('token');
   res.status(200).json({message: 'Logout successful'});
 });
 
+router.get('/isLoggedIn', async(req, res) => {
+  const token = req.cookies.token;
+  try {
+    if (!token) {
+      return res.status(401).json({ isLoggedIn: false, user: null });
+    }
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await User.findById(decodedToken.userId);
+    res.status(200).json({ isLoggedIn: true, user });
+  } catch (error) {
+    res.status(401).json({ isLoggedIn: false, user: null });
+  }
+});
 
 module.exports = router;
