@@ -15,23 +15,23 @@ import ProductPage from "./pages/ProductPage";
 import ProductsCard from "./components/ProductsCard";
 function App() {
   // loader state
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate data fetching with a timeout for the loader
-  useEffect(() => {
-    const fakeDataFetch = () => {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 4000); // Preload for 4 seconds
-    };
+  // // Simulate data fetching with a timeout for the loader
+  // useEffect(() => {
+  //   const fakeDataFetch = () => {
+  //     setTimeout(() => {
+  //       setIsLoading(false);
+  //     }, 4000); // Preload for 4 seconds
+  //   };
 
-    fakeDataFetch();
-  }, []);
+  //   fakeDataFetch();
+  // }, []);
 
   // If loading, show the Loader component
-  if (isLoading) {
-    return <Loader />;
-  }
+  // if (isLoading) {
+  //   return <Loader />;
+  // }
   
   // Once loading is complete, render the main application
   return (

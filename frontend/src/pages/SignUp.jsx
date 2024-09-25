@@ -29,6 +29,14 @@ function SignUp() {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Registration failed');
       }
+      const data = await response.json();
+      if(data.token){
+        localStorage.setItem('token', data.token);
+        console.log(data.token);
+      }
+      else {
+        console.error('Login failed, no token received.');
+      }
 
       navigate('/home');
     } catch (error) {

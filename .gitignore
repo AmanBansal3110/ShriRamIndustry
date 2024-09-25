@@ -1,2 +1,4 @@
+backend/.env
 
-.env
+# Config files
+backend/config/development.json
