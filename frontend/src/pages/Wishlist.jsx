@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import image1 from '../assets/tshirt1.jpg';
-import image2 from '../assets/tshirt2.jpg';
-import binIcon from '../assets/bin.svg'; // Make sure to import your bin icon
+import React, { useState } from "react";
+import image1 from "/assets/tshirt1.jpg";
+import image2 from "/assets/tshirt2.jpg";
+import binIcon from "/assets/bin.svg"; // Make sure to import your bin icon
 
 const WishlistItem = ({ imageUrl, name, price, onAddToCart, onRemove }) => {
   return (

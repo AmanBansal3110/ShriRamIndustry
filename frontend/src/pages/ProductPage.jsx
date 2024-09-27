@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import tshirt1 from '../assets/tshirt1.jpg';
-import tshirt2 from '../assets/tshirt2.jpg';
-import tshirt3 from '../assets/tshirt3.jpg';
-import ProductsCard from '../components/ProductsCard';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import tshirt1 from "/assets/tshirt1.jpg";
+import tshirt2 from "/assets/tshirt2.jpg";
+import tshirt3 from "/assets/tshirt3.jpg";
+import ProductsCard from "../components/ProductsCard";
 
 const ProductPage = () => {
   const { categoryName } = useParams();

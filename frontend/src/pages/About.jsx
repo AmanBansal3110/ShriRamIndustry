@@ -1,12 +1,13 @@
-import React from 'react';
-import '../css/About.css';
-import founderImage from '../assets/founder.jpg'; // Replace with actual paths to images
-import cofounderImage from '../assets/cofounder.jpg';
+import React from "react";
+import "../css/About.css";
+import founderImage from "/assets/founder.jpg";
+import cofounderImage from "/assets/cofounder.jpg";
+
 // Removed Footer import
 
 function About() {
   return (
-    <div className="flex flex-col min-h-screen bg-gray-900 text-white">
+    <div className="flex flex-col min-h-screen bg-gray-800 text-white">
       <div className="about-container flex-grow p-8">
         <div className="flex flex-col md:flex-row items-start justify-between">
           {/* Left Side: About the Company */}

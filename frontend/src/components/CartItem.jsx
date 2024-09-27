@@ -1,5 +1,5 @@
-import React from 'react';
-import bin from '../assets/bin.svg';
+import React from "react";
+import bin from "/assets/bin.svg";
 
 const CartItem = ({ imageUrl, name, description, price, onRemove }) => {
   return (

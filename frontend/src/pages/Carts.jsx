@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import CartItem from '../components/CartItem';
 import CartSummary from '../components/CartSummary';
 // Import images
-import tshirt1 from '../assets/tshirt1.jpg';
-import tshirt2 from '../assets/tshirt2.jpg';
+import tshirt1 from '/assets/tshirt1.jpg';
+import tshirt2 from '/assets/tshirt2.jpg';
 
 const Cart = () => {
   const [products, setProducts] = useState([

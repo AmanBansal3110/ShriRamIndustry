@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import relatedImg1 from '../assets/tshirt1.jpg';
-import relatedImg2 from '../assets/tshirt2.jpg';
-import relatedImg3 from '../assets/tshirt3.jpg';
-import productImg from '../assets/tshirt4.jpg';
+import relatedImg1 from "/assets/tshirt1.jpg";
+import relatedImg2 from "/assets/tshirt2.jpg";
+import relatedImg3 from "/assets/tshirt3.jpg";
+import productImg from '/assets/tshirt4.jpg';
 
 const ProductCard = () => {
   const [selectedImage, setSelectedImage] = useState(productImg);
