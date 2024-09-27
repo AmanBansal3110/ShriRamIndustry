@@ -4,7 +4,7 @@ import womensItem2 from '../assets/tshirt2.jpg';
 import womensItem3 from '../assets/tshirt3.jpg';
 import womensItem4 from '../assets/tshirt4.jpg';
 import womensItem5 from '../assets/tshirt2.jpg';
-import womensItem6 from '../assets/tshirt2.jpg';
+import womensItem6 from '../assets/tshirt1.jpg';
 
 const WomensCollectionSection = () => {
   const images = [
@@ -41,20 +41,26 @@ const WomensCollectionSection = () => {
 
   return (
     <section className="container mx-auto px-4">
-      <h2 className="text-3xl font-semibold mb-8 text-center">Women's Collection</h2>
+      <h2 className="text-4xl font-bold mb-8 text-center text-black">Women's Collection</h2>
       <div className="overflow-hidden">
-        <div 
+        <div
           ref={containerRef}
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * (100 / images.length)}%)` }}
         >
           {images.concat(images[0]).map((image, index) => (
-            <div key={index} className="w-1/3 md:w-1/4 lg:w-1/5 flex-shrink-0 px-1">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
-                <img src={image} alt={`Women's Item ${index + 1}`} className="w-full h-32 object-cover" />
-                <div className="p-2">
-                  <h3 className="text-sm font-semibold mb-1">Women's Item</h3>
-                  <p className="text-xs text-gray-600">$89.99</p>
+            <div key={index} className="flex-shrink-0 w-full md:w-1/3 lg:w-1/4 p-2">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
+                <img src={image} alt={`Women's Item ${index + 1}`} className="w-full h-48 object-cover" />
+                <div className="p-4">
+                  <h3 className="text-lg font-semibold mb-1">Stylish T-Shirt</h3>
+                  <p className="text-gray-500 mb-2">A trendy T-shirt for every occasion.</p>
+                  <div className="flex justify-between items-center">
+                    <span className="text-xl font-bold text-pink-500">$29.99</span>
+                    <button className="bg-pink-500 text-white px-3 py-1 rounded hover:bg-pink-600 transition-colors duration-300">
+                      Add to Cart
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

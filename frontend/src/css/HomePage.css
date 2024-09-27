@@ -1,0 +1,67 @@
+/* HomePage.css */
+
+/* Example styles for animations */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .testimonial {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .testimonial.active {
+    opacity: 1;
+  }
+  
+  .category-item {
+    transition: transform 0.2s ease;
+  }
+  
+  .category-item:hover {
+    transform: scale(1.1);
+  }
+  
+  .cta-button {
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #ff4081; /* Change to your desired hover color */
+  }
+  
+  .newsletter-form {
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+  .product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+  .video-section {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .video-section video {
+    object-fit: cover;
+  }
+  
+  .video-section h2 {
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+  }
+  
+  .video-section p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+  

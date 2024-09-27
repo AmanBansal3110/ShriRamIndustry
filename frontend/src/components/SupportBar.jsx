@@ -35,7 +35,7 @@ const SupportBar = () => {
 
 
   return (
-    <div className="bg-gray-800 text-white text-xs flex flex-wrap justify-between items-center py-1 px-4">
+    <div className="bg-black text-white text-xs flex flex-wrap justify-between items-center py-1 px-4">
       <div className="flex-1 flex items-center">
         <span className="support-bar-item">
           <a href="mailto:shriramindustry@gmail.com" className="hover:text-pink-500 transition duration-300">

@@ -9,10 +9,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          50: '#f0f9ff',
-          100: '#e0f2fe',
-          200: '#bae6fd',
+        coral: {
+          500: '#FF6F61', // Replace with a coral color code
+        },
+        navy: {
+          800: '#001f3f', // Dark navy color
+          primary: {
+            50: '#f0f9ff',
+            100: '#e0f2fe',
+            200: '#bae6fd',
           300: '#7dd3fc',
           400: '#38bdf8',
           500: '#0ea5e9',
@@ -36,6 +41,7 @@ module.exports = {
           950: '#4a0e4e',
         },
         accent: colors.amber,
+      },
         neutral: colors.gray,
       },
     },
