@@ -51,6 +51,11 @@ const FullWidthContainer = styled.div`
     max-width: 100%;
     padding: 0;
   }
+
+  /* Add this new style for gap between components */
+  & > * {
+    margin-bottom: 1px;
+  }
 `;
 
 const SliderContainer = styled.div`
@@ -90,6 +95,7 @@ const CategoryGrid = styled.div`
   width: ${(props) => 100 * props.visibleCount}%; /* Adjust grid width based on visible count */
   transform: translateX(${(props) => props.translateX}%);
   transition: transform 0.5s ease-in-out;
+  gap: 1px;
 `;
 
 const CategoryItem = styled.div`
@@ -180,7 +186,7 @@ const HomePage = () => {
             {
               id: 1,
               name: "Sample Product",
-              price: 19999,
+              price: 89999,
               image: "assets/slide15.png"
             },
             {

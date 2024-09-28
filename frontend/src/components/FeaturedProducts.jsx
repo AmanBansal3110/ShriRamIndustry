@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // Styled Components
 const FeaturedContainer = styled.section`
-background-image: url('/assets/spotlight.jpeg');
+background-image: url('/assets/spotlight2.jpeg');
   width: 100%;
   padding: 40px 20px;
   background-color: #f0f0f0; // Changed from white to light gray
