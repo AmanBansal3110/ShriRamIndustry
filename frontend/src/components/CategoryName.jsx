@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Add this import
 
 const CategoryName = ({ image, name }) => {
   const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate(); // Add this line
 
   const handleImageError = () => {
     setImageError(true);

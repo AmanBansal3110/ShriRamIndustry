@@ -1,45 +1,124 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import styled from 'styled-components';
+
+// Styled Components
+const FeaturedContainer = styled.section`
+background-image: url('/assets/spotlight.jpeg');
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #f0f0f0; // Changed from white to light gray
+  text-align: center;
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 30px;
+`;
+
+const ProductsGrid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+
+  @media (max-width: 1200px) {
+    justify-content: space-around;
+  }
+
+  @media (max-width: 768px) {
+    justify-content: space-around;
+  }
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+`;
+
+const ProductCard = styled.div`
+  flex: 0 1 calc(25% - 20px);
+  border: 2px solid black;
+  padding: 20px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;  
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(
+      circle,
+      rgba(255, 255, 255, 0.8) 0%,
+      rgba(255, 255, 255, 0) 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+
+    &:before {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    flex: 0 1 calc(33.333% - 20px);
+  }
+
+  @media (max-width: 768px) {
+    flex: 0 1 calc(50% - 20px);
+  }
+
+  @media (max-width: 576px) {
+    flex: 0 1 100%;
+  }
+`;
+
+const ProductImage = styled.img`
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-bottom: 2px solid black;
+  margin-bottom: 20px;
+`;
+
+const ProductName = styled.h3`
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 10px;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: gray;
+`;
 
 const FeaturedProducts = ({ products }) => {
-  const [currentProductIndex, setCurrentProductIndex] = useState(0);
-
-  useEffect(() => {
-    if (products && products.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentProductIndex((prevIndex) => (prevIndex + 1) % products.length);
-      }, 3000); // Change the image every 3 seconds
-
-      return () => clearInterval(interval);
-    }
-  }, [products]);
-
-  const currentProduct = products && products[currentProductIndex];
-
-  const handleImageError = (e) => {
-    console.error('Error loading image:', e);
-    // Optionally set a fallback image
-    // e.target.src = 'path/to/fallback-image.jpg';
-  };
-
   return (
-    <div className="container mx-auto my-8">
-      <h2 className="text-4xl text-center font-bold mb-6">Featured Products</h2>
-      <div className="relative w-full h-96 flex items-center justify-center">
-        {currentProduct ? (
-          <div className="relative w-full h-full">
-            <img
-              src={currentProduct.image}
-              alt={currentProduct.name}
-              className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-100"
-              key={currentProduct.id}
-              onError={handleImageError}
-            />
-          </div>
-        ) : (
-          <p>No featured products available</p>
-        )}
-      </div>
-    </div>
+    <FeaturedContainer>
+      <SectionTitle style={{ color: 'white' }}>Featured Products</SectionTitle>
+      <ProductsGrid>
+        {products.map((product) => (
+          <ProductCard key={product.id}>
+            <ProductImage src={product.image} alt={product.name} />
+            <ProductName>{product.name}</ProductName>
+            <ProductPrice>Rs.{product.price.toFixed(2)}</ProductPrice>
+          </ProductCard>
+        ))}
+      </ProductsGrid>
+    </FeaturedContainer>
   );
 };
 

@@ -38,7 +38,6 @@ function App() {
     <Router>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <div className="separator-line"></div> {/* Separator line added here */}
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -49,8 +48,6 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<ProductsCard />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/signin" element={<SignIn />} />
             <Route path="/productpage" element={<ProductPage />} />
           </Routes>
         </main>

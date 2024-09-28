@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import SignUp from '../pages/SignUp'; 
+import SignIn from '../pages/SignIn'; 
 
 const SupportBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isSignUpVisible, setIsSignUpVisible] = useState(false); 
+  const [isSignInVisible, setIsSignInVisible] = useState(false); 
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -12,7 +16,6 @@ const SupportBar = () => {
       credentials: 'include',
     });
     const data = await response.json();
-    console.log(data);
     setIsLoggedIn(data.isLoggedIn);
   };
 
@@ -33,6 +36,20 @@ const SupportBar = () => {
     navigate('/home');
   };
 
+  const handleSignUpClick = () => {
+    setIsSignUpVisible(true);
+    setIsSignInVisible(false); // Close SignIn if it's open
+  };
+
+  const handleSignInClick = () => {
+    setIsSignInVisible(true);
+    setIsSignUpVisible(false); // Close SignUp if it's open
+  };
+
+  const handleClosePopup = () => {
+    setIsSignUpVisible(false);
+    setIsSignInVisible(false);
+  };
 
   return (
     <div className="bg-black text-white text-xs flex flex-wrap justify-between items-center py-1 px-4">
@@ -58,15 +75,45 @@ const SupportBar = () => {
           </button>
         ) : (
           <>
-            <button onClick={() => navigate('/signin')} className="hover:text-pink-500 transition duration-300 support-bar-item">
+            <button onClick={handleSignInClick} className="hover:text-pink-500 transition duration-300 support-bar-item">
               Log In
             </button>
-            <button onClick={()=>navigate('/signup')} className="hover:text-pink-500 transition duration-300 support-bar-item">
+            <button onClick={handleSignUpClick} className="hover:text-pink-500 transition duration-300 support-bar-item">
               Sign Up
             </button>
           </>
         )}
       </div>
+
+      {/* Modal for SignUp Component */}
+      {isSignUpVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 transition duration-150"
+              onClick={handleClosePopup}
+            >
+              &times;
+            </button>
+            <SignUp onClose={handleClosePopup} onSignInClick={handleSignInClick} />
+          </div>
+        </div>
+      )}
+
+      {/* Modal for SignIn Component */}
+      {isSignInVisible && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full relative">
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800 transition duration-150"
+              onClick={handleClosePopup}
+            >
+              &times;
+            </button>
+            <SignIn onClose={handleClosePopup} onSignUpClick={handleSignUpClick} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

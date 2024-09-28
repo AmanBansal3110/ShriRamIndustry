@@ -1,92 +1,54 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .sign-up-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    background-color: #d1d5db; /* bg-gray-300 */
-  }
-  
-  .sign-up-card {
-    background-color: white; /* Card color */
-    padding: 40px;
-    border-radius: 15px;
-    border: 1px solid rgb(73,71,72); /* Border color of theme */
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3); /* Optional shadow */
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .sign-up-title {
-    color: rgb(73,71,72); /* Title color */
-    font-size: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .input-group {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 15px;
-  }
-  
-  .sign-up-input {
-    background-color: white; /* Input background color */
-    border: 1px solid rgb(73,71,72); /* Border color of theme */
-    padding: 15px;
-    border-radius: 10px;
-    color: rgb(73,71,72); /* Text color */
-    width: 100%;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .sign-up-input:focus {
-    outline: none;
-    border-color: rgb(73,71,72); /* Theme color for border on focus */
-    box-shadow: 0 0 10px rgba(73,71,72, 0.5); /* Theme color for box shadow on focus */
-  }
-  
-  .full-width {
-    width: calc(100% - 30px);
-    margin-bottom: 15px;
-  }
-  
-  .sign-up-button {
-    background-color: #1f2937; /* blue-500 */
-    color: #ffffff;
-    font-size: 18px;
-    padding: 15px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-    width: 100%;
-  }
-  
-  .sign-up-button:hover {
-    background-color: #4b5563; /* gray-600 */
-  }
-  
-  .sign-up-footer {
-    color: #bbb;
-    margin-top: 20px;
-    font-size: 14px;
-  }
-  
-  .sign-up-link {
-    color: rgb(73,71,72); /* Theme color for link */
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .sign-up-link:hover {
-    text-decoration: underline;
-  }
+.sign-up-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white; /* Background color for the entire page */
+}
+
+.sign-up-card {
+  width: 400px; /* Width of the card */
+}
+
+.sign-up-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px; /* Spacing between inputs */
+  background-color: #f9f9f9; /* Light background for input fields */
+  color: #333; /* Text color for input fields */
+  transition: border-color 0.2s;
+}
+
+.sign-up-input:focus {
+  border-color: #888; /* Focused border color */
+  outline: none; /* Remove default outline */
+}
+
+.sign-up-button {
+  background-color: #333; /* Button background color */
+  color: white; /* Button text color */
+  font-size: 16px; /* Font size for button text */
+  border: none; /* Remove default border */
+  border-radius: 5px; /* Round the corners */
+  cursor: pointer; /* Change cursor to pointer */
+}
+
+.sign-up-button:hover {
+  background-color: #555; /* Slightly lighter background on hover */
+}
+
+.sign-up-footer {
+  color: #888; /* Footer text color */
+  font-size: 14px; /* Font size for footer */
+}
+
+.sign-up-link {
+  color: #aaa; /* Link color */
+  cursor: pointer; /* Change cursor to pointer for link */
+}
+
+.sign-up-link:hover {
+  color: #fff; /* Change link color on hover */
+}

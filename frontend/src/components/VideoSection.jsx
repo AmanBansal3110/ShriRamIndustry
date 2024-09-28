@@ -28,9 +28,9 @@ const VideoSection = () => {
         <div className="flex-grow"></div>
         <div className="text-center text-white px-6 md:px-12 mb-16">
           <button
-            className="px-6 py-3 bg-transparent text-white border border-white rounded-none transition-all duration-300 text-sm uppercase hover:bg-white hover:text-black"
+            className="px-6 py-3 bg-transparent text-white border border-white rounded-none transition-all duration-300 text-sm uppercase"
           >
-            EXPLORE
+            EXPLORE MORE
           </button>
         </div>
       </div>
