@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Add this import
 
-const CategoryName = ({ image, name }) => {
+const CategoryName = ({id, image, name }) => {
   const [imageError, setImageError] = useState(false);
   const navigate = useNavigate(); // Add this line
 
@@ -18,7 +18,7 @@ const CategoryName = ({ image, name }) => {
       <div className="absolute inset-0 flex flex-col items-center justify-center">
         <h2 className="text-white text-6xl md:text-7xl font-extrabold drop-shadow-lg mb-4 text-center">{name}</h2> {/* Richer look for category name */}
         <button
-            onClick={() => navigate('/products')}
+            onClick={() => navigate(`/category/${id}/products`)}
             className="px-6 py-3 bg-transparent text-white border border-white rounded-none transition-all duration-300 text-sm uppercase"
           >
             EXPLORE

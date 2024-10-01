@@ -15,8 +15,12 @@ const SupportBar = () => {
       method: 'GET',
       credentials: 'include',
     });
-    const data = await response.json();
-    setIsLoggedIn(data.isLoggedIn);
+    try {
+      const data = await response.json();
+      setIsLoggedIn(data.isLoggedIn);
+    } catch (error) {
+      console.error('Error checking authentication:', error);
+    }
   };
 
   useEffect(() => {

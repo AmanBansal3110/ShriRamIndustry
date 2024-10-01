@@ -47,13 +47,13 @@ function SignUp({ onClose, onSignInClick }) {
       </p>
       <input
         id='firstname'
-        className="border border-gray-300 rounded-md p-2.5 mb-3 w-full text-base focus:border-pink-500 focus:ring focus:ring-pink-200 focus:ring-opacity-50"
+        className="border border-gray-300 text-black rounded-md p-2.5 mb-3 w-full text-base focus:border-pink-500 focus:ring focus:ring-pink-200 focus:ring-opacity-50"
         type="text"
         placeholder="First Name"
       />
       <input
         id='lastname'
-        className="border border-gray-300 rounded-md p-2.5 mb-3 w-full text-base focus:border-pink-500 focus:ring focus:ring-pink-200 focus:ring-opacity-50"
+        className="border border-gray-300 text-black rounded-md p-2.5 mb-3 w-full text-base focus:border-pink-500 focus:ring focus:ring-pink-200 focus:ring-opacity-50"
         type="text"
         placeholder="Last Name"
       />

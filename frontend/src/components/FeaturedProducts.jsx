@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 // Styled Components
 const FeaturedContainer = styled.section`
-background-image: url('/assets/spotlight2.jpeg');
+background-image: url('/assets/spotlight.jpeg');
   width: 100%;
   padding: 40px 20px;
   background-color: #f0f0f0; // Changed from white to light gray
@@ -110,8 +110,8 @@ const FeaturedProducts = ({ products }) => {
     <FeaturedContainer>
       <SectionTitle style={{ color: 'white' }}>Featured Products</SectionTitle>
       <ProductsGrid>
-        {products.map((product) => (
-          <ProductCard key={product.id}>
+        {products.map((product, index) => (
+          <ProductCard key={product.id || index}>
             <ProductImage src={product.image} alt={product.name} />
             <ProductName>{product.name}</ProductName>
             <ProductPrice>Rs.{product.price.toFixed(2)}</ProductPrice>

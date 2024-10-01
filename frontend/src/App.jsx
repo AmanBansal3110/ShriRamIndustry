@@ -48,7 +48,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/products" element={<ProductsCard />} />
-            <Route path="/productpage" element={<ProductPage />} />
+            <Route path="/category/:categoryid/products" element={<ProductPage />} />
           </Routes>
         </main>
         <div className="separator-line"></div> {/* Separator line added here */}

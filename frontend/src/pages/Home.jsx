@@ -6,6 +6,7 @@ import FeaturedProducts from '../components/FeaturedProducts';
 import VideoSection from '../components/VideoSection';
 import NewsletterPopup from '../components/Newsletter';
 import CategoryName from '../components/CategoryName';
+import { Link } from 'react-router-dom'; // Add this import
 
 const ResponsiveContainer = styled.div`
   width: 100%;
@@ -98,10 +99,12 @@ const CategoryGrid = styled.div`
   gap: 1px;
 `;
 
-const CategoryItem = styled.div`
-  flex: 0 0 ${(props) => 100 / props.visibleCount}%; /* Each category takes the appropriate fraction of the width */
+const CategoryItem = styled(Link)`
+  flex: 0 0 ${(props) => 100 / props.visibleCount}%;
   padding: 0;
   margin: 0;
+  text-decoration: none;
+  color: inherit;
 `;
 
 const HomePage = () => {
@@ -112,7 +115,12 @@ const HomePage = () => {
 
   const fetchCategories = async () => {
     try {
-      const response = await fetch('http://localhost:3001/category');
+      const response = await fetch('http://localhost:3001/category', {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
       const data = await response.json();
       setCategories(data);
     } catch (error) {
@@ -122,7 +130,7 @@ const HomePage = () => {
 
   useEffect(() => {
     fetchCategories();
-  }, []);
+  }, [categories]);
 
   // Function to dynamically set visibleCount based on window size
   const updateVisibleCount = () => {
@@ -180,19 +188,19 @@ const HomePage = () => {
             {
               id: 1,
               name: "Sample Product",
-              price: 49999,
+              price: 4999,
               image: "assets/slide15.png"
             },
             {
               id: 1,
               name: "Sample Product",
-              price: 89999,
+              price: 3999,
               image: "assets/slide15.png"
             },
             {
               id: 1,
               name: "Sample Product",
-              price: 29999,
+              price: 2999,
               image: "assets/slide15.png"
             }
             // Add more sample products as needed
@@ -203,8 +211,16 @@ const HomePage = () => {
           <PrevButton onClick={slideLeft} disabled={startIndex === 0}>‹</PrevButton>
           <CategoryGrid translateX={getTranslateX()} visibleCount={visibleCount}>
             {categories.map((category) => (
-              <CategoryItem key={category._id} visibleCount={visibleCount}>
-                <CategoryName image={category.image} name={category.name} />
+              <CategoryItem 
+                to={`/category/${category._id}/products`} 
+                key={category._id} 
+                visibleCount={visibleCount}
+              >
+                <CategoryName 
+                  id={category._id}
+                  image={category.image} 
+                  name={category.name} 
+                />
               </CategoryItem>
             ))}
           </CategoryGrid>
