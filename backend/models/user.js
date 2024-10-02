@@ -24,8 +24,23 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-    }    
-
+    },
+    products_wishlist: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Product',
+    }],
+    products_cart: [{
+        product: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+            required: true
+        },
+        quantity: {
+            type: Number,
+            default: 1,
+            min: 1
+        }
+    }],
 })
 
 const User = mongoose.model('User', userSchema);
