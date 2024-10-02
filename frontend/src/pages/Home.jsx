@@ -55,7 +55,7 @@ const FullWidthContainer = styled.div`
 
   /* Add this new style for gap between components */
   & > * {
-    margin-bottom: 1px;
+    // margin-bottom: 1px;
   }
 `;
 

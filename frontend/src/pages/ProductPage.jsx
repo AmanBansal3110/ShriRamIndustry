@@ -4,7 +4,8 @@ import axios from "axios";
 import styled from "styled-components";
 import { motion, AnimatePresence } from "framer-motion";
 import { debounce } from "lodash";
-import { FaSearch, FaSort, FaFilter, FaTh, FaThLarge, FaHeart, FaRegHeart, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaSearch, FaFilter, FaTh, FaThLarge, FaHeart, FaRegHeart, FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { toast } from 'react-toastify'; // Add this import for notifications
 
 const ProductPageContainer = styled.div`
   background-color: #f9f9f9;
@@ -55,58 +56,21 @@ const CategoryDescription = styled(motion.p)`
 const ControlsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 20px;
   margin-bottom: 30px;
 
   @media (max-width: 768px) {
-    flex-direction: column;
+    flex-wrap: wrap;
   }
-`;
-
-const ViewSearchContainer = styled(motion.div)`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-`;
-
-const FilterContainer = styled(motion.div)`
-  display: flex;
-  gap: 10px;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-
-  @media (max-width: 768px) {
-    justify-content: space-between;
-  }
-`;
-
-const FilterGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-`;
-
-const FilterLabel = styled.label`
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #4a4a4a;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 `;
 
 const ViewSelect = styled.select`
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
   background-color: white;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #4a4a4a;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -120,51 +84,56 @@ const ViewSelect = styled.select`
 
 const SearchInputWrapper = styled.div`
   position: relative;
+  width: 200px;
 `;
 
 const SearchInput = styled.input`
   width: 100%;
-  padding: 12px 12px 12px 40px;
-  font-size: 1rem;
-  border: 2px solid #e0e0e0;
+  padding: 8px 8px 8px 30px;
+  font-size: 0.9rem;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   transition: all 0.3s ease;
 
   &:focus {
     border-color: #ff69b4;
     outline: none;
-    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.2);
+    box-shadow: 0 0 0 2px rgba(255, 105, 180, 0.2);
   }
 `;
 
 const SearchIcon = styled(FaSearch)`
   position: absolute;
-  left: 12px;
+  left: 8px;
   top: 50%;
   transform: translateY(-50%);
   color: #666;
+  width: 14px;
+  height: 14px;
 `;
 
-const ActionButton = styled.button`
+const FilterButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px 20px;
-  font-size: 1rem;
+  padding: 8px 12px;
   color: #4a4a4a;
-  background-color: #f0f0f0;
-  border: none;
+  background-color: transparent;
+  border: 1px solid #e0e0e0;
   border-radius: 5px;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 0.9rem;
 
   &:hover {
-    background-color: #e0e0e0;
     color: #ff69b4;
+    border-color: #ff69b4;
   }
 
   svg {
-    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    margin-left: 6px;
   }
 `;
 
@@ -235,13 +204,16 @@ const WishlistIcon = styled.div`
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 50%;
   padding: 10px;
 
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+
   &:hover {
     color: #ff69b4;
-    background-color: rgba(0, 0, 0, 0.7);
   }
 `;
 
@@ -272,14 +244,18 @@ const ProductPrice = styled.p`
 const AddToCartButton = styled.button`
   background-color: #000000;
   color: white;
-  padding: 14px 20px;
+  padding: 10px 15px;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  width: 100%;
   transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  white-space: nowrap;
 
   &:hover {
     background-color: #ff69b4;
@@ -353,6 +329,61 @@ const ApplyFilterButton = styled.button`
   }
 `;
 
+const QuantityControl = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100px;
+`;
+
+const QuantityButton = styled.button`
+  background-color: transparent;
+  border: none;
+  color: #333;
+  font-size: 1.2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+`;
+
+const QuantityDisplay = styled.span`
+  font-size: 1rem;
+  padding: 0 10px;
+  background-color: white;
+`;
+
+const ProductCardFooter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f0f0f0;
+`;
+
+const AddedToCartMessage = styled.div`
+  background-color: #4CAF50;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+
+  ${props => props.visible && `
+    transform: translateY(0);
+  `}
+`;
+
 const ProductPage = () => {
   const { categoryid } = useParams();
   const [products, setProducts] = useState([]);
@@ -370,6 +401,8 @@ const ProductPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [priceRange, setPriceRange] = useState(1000);
   const [maxPrice, setMaxPrice] = useState(1000);
+  const [cartItems, setCartItems] = useState({});
+  const [addedToCartMessages, setAddedToCartMessages] = useState({});
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -395,6 +428,28 @@ const ProductPage = () => {
 
     fetchProducts();
   }, [categoryid]);
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/products/cart', {
+          credentials: 'include',
+        });
+        const data = await response.json();
+        if (response.ok) {
+          const cartItemsMap = {};
+          data.cartItems.forEach(item => {
+            cartItemsMap[item.product._id] = item.quantity;
+          });
+          setCartItems(cartItemsMap);
+        }
+      } catch (error) {
+        console.error('Error fetching cart items:', error);
+      }
+    };
+
+    fetchCartItems();
+  }, []);
 
   const handleViewChange = (e) => {
     setColumns(Number(e.target.value));
@@ -427,7 +482,7 @@ const ProductPage = () => {
   }, [filteredProducts, sortOrder]);
 
   const handleFilter = useCallback(() => {
-    // Implement filter logic (e.g., open a filter modal)
+    setShowFilters(true);
   }, []);
 
   const handleWishlistToggle = useCallback((productId) => {
@@ -446,6 +501,62 @@ const ProductPage = () => {
     setShowFilters(false);
     setCurrentPage(1);
   }, [products, searchTerm, priceRange]);
+
+  const handleAddToCart = useCallback(async (productId) => {
+    try {
+      const response = await fetch(`http://localhost:3001/products/${productId}/cart`, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setCartItems(prevItems => ({
+          ...prevItems,
+          [productId]: (prevItems[productId] || 0) + 1
+        }));
+        toast.success('Item added to cart!');
+      } else {
+        throw new Error('Failed to add item to cart');
+      }
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      toast.error('Failed to add item to cart. Please try again.');
+    }
+  }, []);
+
+  const handleQuantityChange = useCallback(async (productId, action) => {
+    const endpoint = action === 'increase' 
+      ? `http://localhost:3001/products/cart/increase/${productId}`
+      : `http://localhost:3001/products/cart/decrease/${productId}`;
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setCartItems(prevItems => ({
+          ...prevItems,
+          [productId]: action === 'increase' 
+            ? (prevItems[productId] || 0) + 1
+            : Math.max((prevItems[productId] || 0) - 1, 0)
+        }));
+        toast.success(`Item quantity ${action}d`);
+      } else {
+        throw new Error(`Failed to ${action} item quantity`);
+      }
+    } catch (error) {
+      console.error(`Error ${action}ing quantity:`, error);
+      toast.error(`Failed to ${action} item quantity. Please try again.`);
+    }
+  }, []);
 
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
@@ -475,47 +586,23 @@ const ProductPage = () => {
         </CategoryDescription>
       </PageHeader>
       <ControlsContainer>
-        <ViewSearchContainer
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <FilterGroup>
-            <FilterLabel htmlFor="view-select">View</FilterLabel>
-            <ViewSelect id="view-select" value={columns} onChange={handleViewChange}>
-              <option value={2}>2 Columns</option>
-              <option value={3}>3 Columns</option>
-              <option value={4}>4 Columns</option>
-            </ViewSelect>
-          </FilterGroup>
-          <FilterGroup>
-            <FilterLabel htmlFor="search">Search</FilterLabel>
-            <SearchInputWrapper>
-              <SearchIcon />
-              <SearchInput
-                id="search"
-                type="text"
-                placeholder="Search products..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
-            </SearchInputWrapper>
-          </FilterGroup>
-        </ViewSearchContainer>
-        <FilterContainer
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <ActionButton onClick={handleSort}>
-            <FaSort />
-            Sort by Price ({sortOrder === "asc" ? "Low to High" : "High to Low"})
-          </ActionButton>
-          <ActionButton onClick={handleFilter}>
-            <FaFilter />
-            Filters
-          </ActionButton>
-        </FilterContainer>
+        <ViewSelect value={columns} onChange={handleViewChange}>
+          <option value={2}>2 Columns</option>
+          <option value={3}>3 Columns</option>
+          <option value={4}>4 Columns</option>
+        </ViewSelect>
+        <SearchInputWrapper>
+          <SearchIcon />
+          <SearchInput
+            type="text"
+            placeholder="Search products..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+        </SearchInputWrapper>
+        <FilterButton onClick={handleFilter} title="Open Filters">
+          Filter <FaFilter />
+        </FilterButton>
       </ControlsContainer>
       
       <ProductsGrid
@@ -546,8 +633,28 @@ const ProductPage = () => {
               <ProductInfo>
                 <ProductName>{product.name}</ProductName>
                 <ProductPrice>Rs.{product.price.toFixed(2)}</ProductPrice>
-                <AddToCartButton>Add to Cart</AddToCartButton>
+                <CartControls>
+                  {cartItems[product._id] > 0 ? (
+                    <>
+                      <QuantityControl>
+                        <QuantityButton onClick={() => handleQuantityChange(product._id, 'decrease')}>-</QuantityButton>
+                        <QuantityDisplay>{cartItems[product._id]}</QuantityDisplay>
+                        <QuantityButton onClick={() => handleQuantityChange(product._id, 'increase')}>+</QuantityButton>
+                      </QuantityControl>
+                      <AddToCartButton onClick={() => handleAddToCart(product._id)}>
+                        Add More
+                      </AddToCartButton>
+                    </>
+                  ) : (
+                    <AddToCartButton onClick={() => handleAddToCart(product._id)}>
+                      Add to Cart
+                    </AddToCartButton>
+                  )}
+                </CartControls>
               </ProductInfo>
+              <AddedToCartMessage visible={addedToCartMessages[product._id]}>
+                Item added to cart
+              </AddedToCartMessage>
             </ProductCard>
           ))}
         </AnimatePresence>
@@ -611,5 +718,14 @@ const Pagination = ({ productsPerPage, totalProducts, paginate, currentPage }) =
     </PaginationContainer>
   );
 };
+
+// Styled components
+const CartControls = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  gap: 10px;
+`;
 
 export default ProductPage;
